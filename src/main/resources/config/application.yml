@@ -1,0 +1,63 @@
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+spring:
+    application:
+        name: biyi
+    profiles:
+        active: dev,swagger
+    jackson:
+        serialization.write_dates_as_timestamps: false   
+    mvc:
+        favicon:
+            enabled: false      
+                  
+management:
+    endpoints:
+        web:
+            #监控接口
+            exposure:
+                include: "info,health,prometheus"
+
+ctsi:
+    systemname: space
+   # CORS is only enabled by default with the "dev" profile, so BrowserSync can access the API
+    cors: 
+        #允许源
+        allowed-origins: "*"
+        #允许的HTTP方法
+        allowed-methods: "*"
+        #允许的字段
+        allowed-headers: "*"
+        #可从请求头中获取的字段
+        exposed-headers: "Authorization,Link,X-Total-Count,Content-Disposition"
+        #允许发送处理COOKIE
+        allow-credentials: true
+        #缓存时间
+        max-age: 1800
+    #允许跨域，多个以逗号分隔
+    corspaths: "/api/**"
+    swagger:
+        default-include-pattern: /api/.*
+        title: ctsi API
+        description: ctsi API documentation
+        version: 0.0.1
+        terms-of-service-url:
+        contact-name:
+        contact-url:
+        contact-email:
+        license:
+        license-url:
+    systemconfig:
+        webfiles: /Users/bodhi/allSelf/server/webfiles
+
+    jwtfilter:
+        enable: false
+    userService: userServiceImpl
+    sqlService: sqlServiceImpl
+    metaDataService: metaDataServiceImpl
+    menuService: menuServiceImpl
+
